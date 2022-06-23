@@ -8,24 +8,14 @@ import "./index.css";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
-  const [filteredTodos, setFilteredTodos] = useState([]);
-  const [filteringFlag, setFilteringFlag] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   return (
     <div className="container-fluid">
-      <SearchBar
-        todos={todos}
-        setFilteredTodos={setFilteredTodos}
-        setFilteringFlag={setFilteringFlag}
-      />
+      <SearchBar setSearchValue={setSearchValue} />
       <div className="container">
         <h6 className="Heading">filter-todo-with-components</h6>
         <Form todos={todos} setTodos={setTodos} />
-        <Items todos={filteringFlag ? filteredTodos : todos} />
-        {/* {filteringFlag ? (
-          <Items todos={filteredTodos} />
-        ) : (
-          <Items todos={todos} />
-        )} */}
+        <Items todos={todos} searchValue={searchValue} />
       </div>
     </div>
   );

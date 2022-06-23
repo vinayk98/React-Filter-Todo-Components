@@ -1,12 +1,16 @@
 import React from "react";
 import Item from "./Item";
 
-const Items = ({ todos }) => {
+const Items = ({ todos, searchValue }) => {
   return (
     <ol>
-      {todos.map((todo, index) => {
-        return <Item key={index} todo={todo} />;
-      })}
+      {todos
+        .filter((item) => {
+          return item.includes(searchValue);
+        })
+        .map((todo, index) => {
+          return <Item key={index} todo={todo} />;
+        })}
     </ol>
   );
 };
